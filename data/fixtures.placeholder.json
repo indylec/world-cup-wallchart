@@ -1,0 +1,6 @@
+{
+  "teams": [],
+  "matches": [],
+  "lastUpdated": "1970-01-01T00:00:00.000Z",
+  "_note": "Empty placeholder. Real fixtures load from the football-data.org API via /api/matches. This file exists so the app can boot before the API key is configured."
+}

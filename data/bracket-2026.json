@@ -1,0 +1,43 @@
+{
+  "_note": "Knockout bracket pairings for the 48-team 2026 World Cup. EDIT THIS FILE to match FIFA's official published bracket if these defaults are wrong. Slot syntax: '1A'=Winner Group A · '2A'=Runner-up Group A · '3-N'=Nth best third-place team (1 = best) · 'W-r32-N'=winner of R32 match N (1-indexed) · 'L-sf-N'=loser of SF match N.",
+  "r32": [
+    { "id": "r32-1",  "home": "1A", "away": "3-1" },
+    { "id": "r32-2",  "home": "1C", "away": "3-2" },
+    { "id": "r32-3",  "home": "1B", "away": "3-3" },
+    { "id": "r32-4",  "home": "1D", "away": "3-4" },
+    { "id": "r32-5",  "home": "1E", "away": "3-5" },
+    { "id": "r32-6",  "home": "1G", "away": "3-6" },
+    { "id": "r32-7",  "home": "1F", "away": "3-7" },
+    { "id": "r32-8",  "home": "1H", "away": "3-8" },
+    { "id": "r32-9",  "home": "1I", "away": "2J" },
+    { "id": "r32-10", "home": "1K", "away": "2L" },
+    { "id": "r32-11", "home": "1J", "away": "2I" },
+    { "id": "r32-12", "home": "1L", "away": "2K" },
+    { "id": "r32-13", "home": "2A", "away": "2C" },
+    { "id": "r32-14", "home": "2B", "away": "2D" },
+    { "id": "r32-15", "home": "2E", "away": "2G" },
+    { "id": "r32-16", "home": "2F", "away": "2H" }
+  ],
+  "r16": [
+    { "id": "r16-1", "home": "W-r32-1",  "away": "W-r32-2" },
+    { "id": "r16-2", "home": "W-r32-3",  "away": "W-r32-4" },
+    { "id": "r16-3", "home": "W-r32-5",  "away": "W-r32-6" },
+    { "id": "r16-4", "home": "W-r32-7",  "away": "W-r32-8" },
+    { "id": "r16-5", "home": "W-r32-9",  "away": "W-r32-10" },
+    { "id": "r16-6", "home": "W-r32-11", "away": "W-r32-12" },
+    { "id": "r16-7", "home": "W-r32-13", "away": "W-r32-14" },
+    { "id": "r16-8", "home": "W-r32-15", "away": "W-r32-16" }
+  ],
+  "qf": [
+    { "id": "qf-1", "home": "W-r16-1", "away": "W-r16-2" },
+    { "id": "qf-2", "home": "W-r16-3", "away": "W-r16-4" },
+    { "id": "qf-3", "home": "W-r16-5", "away": "W-r16-6" },
+    { "id": "qf-4", "home": "W-r16-7", "away": "W-r16-8" }
+  ],
+  "sf": [
+    { "id": "sf-1", "home": "W-qf-1", "away": "W-qf-2" },
+    { "id": "sf-2", "home": "W-qf-3", "away": "W-qf-4" }
+  ],
+  "third": { "id": "third", "home": "L-sf-1", "away": "L-sf-2" },
+  "final": { "id": "final", "home": "W-sf-1", "away": "W-sf-2" }
+}

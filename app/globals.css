@@ -1,26 +1,87 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
+/* ---------- Vintage Wallchart Design Tokens ---------- */
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  /* Paper & ink */
+  --color-paper: #f3e9d2;
+  --color-paper-deep: #ead9b3;
+  --color-ink: #1b1714;
+  --color-ink-soft: #3a2e25;
+
+  /* Heritage palette */
+  --color-navy: #14213d;
+  --color-red: #c0392b;
+  --color-mustard: #d9a441;
+  --color-jade: #2f6e4f;
+  --color-faded-blue: #6b91b4;
+  --color-dust: #b8a888;
+
+  /* Type */
+  --font-display: var(--font-display);   /* Bebas Neue — poster titles */
+  --font-heading: var(--font-heading);   /* Archivo Black — blocky labels */
+  --font-serif: var(--font-serif);       /* Playfair — vintage flourish */
+  --font-body: var(--font-body);         /* Inter — UI body */
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+/* ---------- Paper texture & global look ---------- */
+:root {
+  --paper-grain:
+    radial-gradient(circle at 20% 10%, rgba(0, 0, 0, 0.04) 1px, transparent 2px),
+    radial-gradient(circle at 70% 60%, rgba(0, 0, 0, 0.03) 1px, transparent 2px),
+    radial-gradient(circle at 40% 80%, rgba(0, 0, 0, 0.05) 1px, transparent 2px);
+}
+
+html, body {
+  background-color: var(--color-paper);
+  color: var(--color-ink);
+  font-family: var(--font-body), system-ui, sans-serif;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background-image:
+    var(--paper-grain),
+    linear-gradient(180deg, rgba(196, 156, 90, 0.08), transparent 40%),
+    radial-gradient(ellipse at top, rgba(255, 250, 230, 0.4), transparent 60%);
+  background-size: 64px 64px, 100% 100%, 100% 100%;
+  background-attachment: fixed, fixed, fixed;
+}
+
+/* ---------- Utility component classes ---------- */
+@layer components {
+  .poster-title {
+    font-family: var(--font-display), sans-serif;
+    letter-spacing: 0.02em;
+    line-height: 0.85;
+  }
+
+  .heading-block {
+    font-family: var(--font-heading), sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+  }
+
+  .serif-flourish {
+    font-family: var(--font-serif), serif;
+    font-style: italic;
+  }
+
+  /* Halftone gradient overlay — pure CSS until we add real textures */
+  .halftone {
+    background-image:
+      radial-gradient(circle at center, currentColor 1px, transparent 1.5px);
+    background-size: 6px 6px;
+    opacity: 0.18;
+  }
+
+  /* Thin double-rule used on classic posters */
+  .rule-double {
+    border-top: 2px solid currentColor;
+    box-shadow: 0 4px 0 -2px currentColor;
+  }
+}
+
+/* ---------- Print: a paper wallchart should print ---------- */
+@media print {
+  body { background: white; }
+  .no-print { display: none !important; }
 }

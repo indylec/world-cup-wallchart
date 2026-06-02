@@ -1,0 +1,5 @@
+{
+  "_note": "Map of football-data.org match IDs to venue strings. Only entries listed here are shown; absent matches show no venue. Sourced manually because the football-data free tier does not include venue. To populate: cross-reference fifa.com/worldcup/2026 by date and team.",
+  "537327": "Estadio Azteca · Mexico City",
+  "537390": "MetLife Stadium · East Rutherford, NJ"
+}
