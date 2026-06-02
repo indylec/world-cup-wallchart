@@ -90,15 +90,24 @@ function normalizeTeams(
   groupByTeam: Map<string, GroupId>,
 ): Team[] {
   const teams = json.teams ?? [];
-  return teams.map((t) => {
+  const result: Team[] = [];
+  for (const t of teams) {
     const code = t.tla ?? String(t.id);
-    return {
+    const group = groupByTeam.get(code);
+    if (!group) {
+      console.warn(
+        `[matches] no derivable group for team ${code} (${t.name}); excluding from fixtures`,
+      );
+      continue;
+    }
+    result.push({
       code,
       name: t.shortName ?? t.name,
       flagCode: TLA_TO_ISO2[code] ?? code.slice(0, 2).toLowerCase(),
-      group: groupByTeam.get(code) ?? ("A" as GroupId),
-    };
-  });
+      group,
+    });
+  }
+  return result;
 }
 
 function deriveGroups(matches: Match[]): Map<string, GroupId> {
