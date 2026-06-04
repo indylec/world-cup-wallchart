@@ -71,9 +71,9 @@ export function CalendarMatchRow({
       : STAGE_LABEL[match.stage];
 
   return (
-    <li className="flex items-center gap-4 py-3 border-b border-dashed border-[color:var(--color-dust)]">
-      <div className="flex flex-col items-center justify-center w-[72px] shrink-0 leading-tight">
-        <span className="poster-title text-2xl text-[color:var(--color-navy)]">
+    <li className="flex items-center gap-2 sm:gap-4 py-3 border-b border-dashed border-[color:var(--color-dust)]">
+      <div className="flex flex-col items-center justify-center w-[56px] sm:w-[72px] shrink-0 leading-tight">
+        <span className="poster-title text-xl sm:text-2xl text-[color:var(--color-navy)]">
           {k.time}
         </span>
         <span className="text-[9px] text-[color:var(--color-dust)] tracking-wider">
@@ -81,11 +81,11 @@ export function CalendarMatchRow({
         </span>
       </div>
 
-      <span className="heading-block text-[9px] tracking-[0.15em] w-[72px] shrink-0 text-[color:var(--color-red)] border-l-2 border-[color:var(--color-red)] pl-2">
+      <span className="heading-block text-[9px] tracking-[0.12em] sm:tracking-[0.15em] w-[52px] sm:w-[72px] shrink-0 text-[color:var(--color-red)] border-l-2 border-[color:var(--color-red)] pl-1.5 sm:pl-2">
         {stageLabel}
       </span>
 
-      <div className="flex-1 flex items-center gap-3 min-w-0">
+      <div className="flex-1 flex items-center gap-2 sm:gap-3 min-w-0">
         <TeamFull code={match.home} slot={homeSlot} align="end" />
         <ScoreInput match={match} knockout={match.stage !== "group"} size="md" />
         <TeamFull code={match.away} slot={awaySlot} align="start" />
@@ -145,8 +145,8 @@ function TeamFull({
 
   if (!code) {
     return (
-      <span className={`flex-1 flex items-center gap-2 ${alignClass} text-[color:var(--color-dust)]`}>
-        <span className="serif-flourish text-sm italic">
+      <span className={`flex-1 flex items-center gap-2 min-w-0 ${alignClass} text-[color:var(--color-dust)]`}>
+        <span className="serif-flourish text-xs sm:text-sm italic truncate">
           {slot ? slotToLabel(slot) : "TBD"}
         </span>
       </span>
@@ -154,20 +154,20 @@ function TeamFull({
   }
   const team = data?.teams.find((t) => t.code === code);
   return (
-    <span className={`flex-1 flex items-center gap-2 min-w-0 ${alignClass}`}>
+    <span className={`flex-1 flex items-center gap-1.5 sm:gap-2 min-w-0 ${alignClass}`}>
       {align === "start" && (
-        <span className="text-lg leading-none shrink-0" aria-hidden>
+        <span className="text-base sm:text-lg leading-none shrink-0" aria-hidden>
           {flagEmoji(team?.flagCode ?? "xx")}
         </span>
       )}
-      <span className="flex flex-col leading-tight min-w-0">
+      <span className={`flex flex-col leading-tight min-w-0 ${align === "end" ? "items-end" : "items-start"}`}>
         <span className="heading-block text-xs">{code}</span>
-        <span className="text-[10px] text-[color:var(--color-ink-soft)] truncate">
+        <span className="hidden sm:block text-[10px] text-[color:var(--color-ink-soft)] truncate max-w-full">
           {team?.name ?? code}
         </span>
       </span>
       {align === "end" && (
-        <span className="text-lg leading-none shrink-0" aria-hidden>
+        <span className="text-base sm:text-lg leading-none shrink-0" aria-hidden>
           {flagEmoji(team?.flagCode ?? "xx")}
         </span>
       )}
